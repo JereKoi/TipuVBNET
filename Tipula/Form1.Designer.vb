@@ -22,8 +22,8 @@ Partial Class Form1
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
-        Me.txtNimi = New System.Windows.Forms.TextBox()
-        Me.txtVari = New System.Windows.Forms.TextBox()
+        Me.txtName = New System.Windows.Forms.TextBox()
+        Me.txtColor = New System.Windows.Forms.TextBox()
         Me.btnAddTipu = New System.Windows.Forms.Button()
         Me.btnUpdateList = New System.Windows.Forms.Button()
         Me.dtpHatch = New System.Windows.Forms.DateTimePicker()
@@ -35,41 +35,41 @@ Partial Class Form1
         CType(Me.dgvTiput, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
-        'txtNimi
+        'txtName
         '
-        Me.txtNimi.Location = New System.Drawing.Point(198, 51)
-        Me.txtNimi.Name = "txtNimi"
-        Me.txtNimi.Size = New System.Drawing.Size(100, 20)
-        Me.txtNimi.TabIndex = 0
+        Me.txtName.Location = New System.Drawing.Point(198, 51)
+        Me.txtName.Name = "txtName"
+        Me.txtName.Size = New System.Drawing.Size(100, 20)
+        Me.txtName.TabIndex = 0
         '
-        'txtVari
+        'txtColor
         '
-        Me.txtVari.Location = New System.Drawing.Point(198, 97)
-        Me.txtVari.Name = "txtVari"
-        Me.txtVari.Size = New System.Drawing.Size(100, 20)
-        Me.txtVari.TabIndex = 1
+        Me.txtColor.Location = New System.Drawing.Point(405, 54)
+        Me.txtColor.Name = "txtColor"
+        Me.txtColor.Size = New System.Drawing.Size(100, 20)
+        Me.txtColor.TabIndex = 1
         '
         'btnAddTipu
         '
-        Me.btnAddTipu.Location = New System.Drawing.Point(198, 191)
+        Me.btnAddTipu.Location = New System.Drawing.Point(198, 120)
         Me.btnAddTipu.Name = "btnAddTipu"
         Me.btnAddTipu.Size = New System.Drawing.Size(75, 23)
         Me.btnAddTipu.TabIndex = 2
-        Me.btnAddTipu.Text = "Button1"
+        Me.btnAddTipu.Text = "btnAddTipu"
         Me.btnAddTipu.UseVisualStyleBackColor = True
         '
         'btnUpdateList
         '
-        Me.btnUpdateList.Location = New System.Drawing.Point(198, 220)
+        Me.btnUpdateList.Location = New System.Drawing.Point(366, 120)
         Me.btnUpdateList.Name = "btnUpdateList"
         Me.btnUpdateList.Size = New System.Drawing.Size(75, 23)
         Me.btnUpdateList.TabIndex = 3
-        Me.btnUpdateList.Text = "Button2"
+        Me.btnUpdateList.Text = "btnUpdateList"
         Me.btnUpdateList.UseVisualStyleBackColor = True
         '
         'dtpHatch
         '
-        Me.dtpHatch.Location = New System.Drawing.Point(198, 138)
+        Me.dtpHatch.Location = New System.Drawing.Point(198, 94)
         Me.dtpHatch.Name = "dtpHatch"
         Me.dtpHatch.Size = New System.Drawing.Size(200, 20)
         Me.dtpHatch.TabIndex = 4
@@ -77,9 +77,9 @@ Partial Class Form1
         'dgvTiput
         '
         Me.dgvTiput.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.dgvTiput.Location = New System.Drawing.Point(198, 266)
+        Me.dgvTiput.Location = New System.Drawing.Point(12, 162)
         Me.dgvTiput.Name = "dgvTiput"
-        Me.dgvTiput.Size = New System.Drawing.Size(240, 150)
+        Me.dgvTiput.Size = New System.Drawing.Size(776, 254)
         Me.dgvTiput.TabIndex = 5
         '
         'lblName_Label
@@ -87,36 +87,36 @@ Partial Class Form1
         Me.lblName_Label.AutoSize = True
         Me.lblName_Label.Location = New System.Drawing.Point(317, 54)
         Me.lblName_Label.Name = "lblName_Label"
-        Me.lblName_Label.Size = New System.Drawing.Size(39, 13)
+        Me.lblName_Label.Size = New System.Drawing.Size(59, 13)
         Me.lblName_Label.TabIndex = 6
-        Me.lblName_Label.Text = "Label1"
+        Me.lblName_Label.Text = "Tipu Name"
         '
         'lblTipu_color
         '
         Me.lblTipu_color.AutoSize = True
-        Me.lblTipu_color.Location = New System.Drawing.Point(317, 100)
+        Me.lblTipu_color.Location = New System.Drawing.Point(524, 57)
         Me.lblTipu_color.Name = "lblTipu_color"
-        Me.lblTipu_color.Size = New System.Drawing.Size(39, 13)
+        Me.lblTipu_color.Size = New System.Drawing.Size(55, 13)
         Me.lblTipu_color.TabIndex = 7
-        Me.lblTipu_color.Text = "Label2"
+        Me.lblTipu_color.Text = "Tipu Color"
         '
         'lblAddTipu
         '
         Me.lblAddTipu.AutoSize = True
-        Me.lblAddTipu.Location = New System.Drawing.Point(290, 196)
+        Me.lblAddTipu.Location = New System.Drawing.Point(290, 125)
         Me.lblAddTipu.Name = "lblAddTipu"
-        Me.lblAddTipu.Size = New System.Drawing.Size(39, 13)
+        Me.lblAddTipu.Size = New System.Drawing.Size(50, 13)
         Me.lblAddTipu.TabIndex = 8
-        Me.lblAddTipu.Text = "Label3"
+        Me.lblAddTipu.Text = "Add Tipu"
         '
         'lblUpdateList
         '
         Me.lblUpdateList.AutoSize = True
-        Me.lblUpdateList.Location = New System.Drawing.Point(290, 225)
+        Me.lblUpdateList.Location = New System.Drawing.Point(458, 125)
         Me.lblUpdateList.Name = "lblUpdateList"
-        Me.lblUpdateList.Size = New System.Drawing.Size(39, 13)
+        Me.lblUpdateList.Size = New System.Drawing.Size(61, 13)
         Me.lblUpdateList.TabIndex = 9
-        Me.lblUpdateList.Text = "Label4"
+        Me.lblUpdateList.Text = "Update List"
         '
         'Form1
         '
@@ -131,8 +131,8 @@ Partial Class Form1
         Me.Controls.Add(Me.dtpHatch)
         Me.Controls.Add(Me.btnUpdateList)
         Me.Controls.Add(Me.btnAddTipu)
-        Me.Controls.Add(Me.txtVari)
-        Me.Controls.Add(Me.txtNimi)
+        Me.Controls.Add(Me.txtColor)
+        Me.Controls.Add(Me.txtName)
         Me.Name = "Form1"
         Me.Text = "Form1"
         CType(Me.dgvTiput, System.ComponentModel.ISupportInitialize).EndInit()
@@ -141,8 +141,8 @@ Partial Class Form1
 
     End Sub
 
-    Friend WithEvents txtNimi As TextBox
-    Friend WithEvents txtVari As TextBox
+    Friend WithEvents txtName As TextBox
+    Friend WithEvents txtColor As TextBox
     Friend WithEvents btnAddTipu As Button
     Friend WithEvents btnUpdateList As Button
     Friend WithEvents dtpHatch As DateTimePicker
