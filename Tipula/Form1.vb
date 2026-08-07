@@ -162,4 +162,17 @@ Public Class Form1
     Private Sub prgBarTipu_Click(sender As Object, e As EventArgs) Handles prgBarTipu.Click
 
     End Sub
+
+    Private Sub UpdateEndDateTime(Time As DateTime)
+        Dim UpdateEndDateTimeGameQuery As String = "UPDATE GameSession SET EndDateTime = @pstrEndDateTime Where SessionID = 1"
+    End Sub
+
+    Private Sub UpdateStartDateTime(Time As DateTime)
+        Dim UpdateStartDateTimeGameQuery As String = "UPDATE GameSession SET StartDateTime = @pstrStartDateTime Where SessionID = 1 "
+    End Sub
+
+    ' if currTime <= saved time when game was closed
+    ' - tipu hunger always
+    ' + progress if tipu has leveled up
+    ' randomness if tipu gets sickness
 End Class
