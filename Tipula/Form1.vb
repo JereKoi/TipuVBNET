@@ -30,6 +30,10 @@ Public Class Form1
 
     End Sub
 
+    Private Sub Form1_FormClosing(sender As Object, e As FormClosingEventArgs) Handles MyBase.FormClosing
+        UpdateEndDateTime(DateTime.Now)
+    End Sub
+
     Private Sub btnAddTipu_Click(sender As Object, e As EventArgs) Handles btnAddTipu.Click
         ' Checks that name has been entered, if user does not enter name and tries to save
         ' it will show message box. If user tries to enter spaces or
@@ -104,6 +108,28 @@ Public Class Form1
 
     End Sub
 
+    Private Function GetLastClosedTime()
+        Dim lastTime As DateTime = DateTime.Now
+        Dim query As String = "SELECT EndDateTime FROM GameSession WHERE SessionID = 1"
+
+        Using conn As New SqlConnection(connectionString)
+            Using cmd As New SqlCommand(query, conn)
+                Try
+                    conn.Open()
+
+                    Dim result = cmd.ExecuteScalar()
+
+                    If result IsNot Nothing AndAlso Not IsDBNull(result) Then
+                        lastTime = Convert.ToDateTime(result)
+                    End If
+                Catch ex As Exception
+                    MessageBox.Show("Error while retrieving close date: " & ex.Message)
+                End Try
+            End Using
+        End Using
+        Return lastTime
+    End Function
+
 
     Private Sub btnFeedTipu_Click(sender As Object, e As EventArgs) Handles btnFeedTipu.Click
         If dgvTiput.CurrentRow Is Nothing Then
@@ -163,12 +189,51 @@ Public Class Form1
 
     End Sub
 
+    Private Sub CalculateTImeDifference()
+        Dim lastClosed As DateTime = GetLastClosedTime()
+
+        Dim now As DateTime = DateTime.Now
+        Dim timePassed As TimeSpan = now - lastClosed
+
+        Dim hoursPassed As Double = timePassed.TotalHours
+        Dim minutesPassed As Double = timePassed.TotalMinutes
+
+        ' Test to see how long user has been away
+        MessageBox.Show("You've been away for " & Math.Round(minutesPassed, 1) & " minutes")
+    End Sub
+
     Private Sub UpdateEndDateTime(Time As DateTime)
-        Dim UpdateEndDateTimeGameQuery As String = "UPDATE GameSession SET EndDateTime = @pstrEndDateTime Where SessionID = 1"
+        Dim UpdateEndDateTimeGameQuery As String = "UPDATE GameSession SET EndDateTime = @EndDateTime Where SessionID = 1"
+
+        Using conn As New SqlConnection(connectionString)
+            Using cmd As New SqlCommand(UpdateEndDateTimeGameQuery, conn)
+                cmd.Parameters.AddWithValue("@EndDateTime", Time)
+
+                Try
+                    conn.Open()
+                    cmd.ExecuteNonQuery()
+                Catch ex As Exception
+                    MessageBox.Show("Error saving end time: " & ex.Message)
+                End Try
+            End Using
+        End Using
     End Sub
 
     Private Sub UpdateStartDateTime(Time As DateTime)
-        Dim UpdateStartDateTimeGameQuery As String = "UPDATE GameSession SET StartDateTime = @pstrStartDateTime Where SessionID = 1 "
+        Dim UpdateStartDateTimeGameQuery As String = "UPDATE GameSession SET StartDateTime = @StartDateTime Where SessionID = 1 "
+
+        Using conn As New SqlConnection(connectionString)
+            Using cmd As New SqlCommand(UpdateStartDateTimeGameQuery, conn)
+                cmd.Parameters.AddWithValue("@StartDateTime", Time)
+
+                Try
+                    conn.Open()
+                    cmd.ExecuteNonQuery()
+                Catch ex As Exception
+                    MessageBox.Show("Error saving start time: " & ex.Message)
+                End Try
+            End Using
+        End Using
     End Sub
 
     ' if currTime <= saved time when game was closed
